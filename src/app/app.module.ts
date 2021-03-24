@@ -3,10 +3,12 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FidsComponent } from './core/fids/components/fids.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FidsComponent
   ],
   imports: [
     BrowserModule,
