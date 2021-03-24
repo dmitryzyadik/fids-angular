@@ -2,5 +2,5 @@
 <button class="fz-60 m-20 p-50 " (click)="inc()">+</button>
 <button class="fz-60 m-20 p-50" (click)="dec()" [disabled]="cannotDec">-</button>
 <button class="fz-60 m-20 p-50 " (click)="zero()" [disabled]="cannotDec">0</button>
-<p class="fz-60">Counter = {{counter}}</p>
+<p class="fz-60">Counter = {{counter$ | async}}</p>
 <p class="fz-60" *ngIf="upAt">Update {{upAt | date: "HH:mm:ss dd/MM/yyyy"}}</p>

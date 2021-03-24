@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { counterSelector, decrease, increase, zero } from '../fids.action';
 
 @Component({
   selector: 'app-fids',
@@ -7,14 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FidsComponent implements OnInit {
   
-  counter = 0
+
   upAt?: number;
+  counter$ = this.store.select(counterSelector)
 
   get cannotDec(): boolean {
-    return this.counter <= 0;
+    return false
   }
 
-  constructor() { }
+  constructor(private store: Store) { }
 
   ngOnInit(): void {
 
@@ -23,15 +26,18 @@ export class FidsComponent implements OnInit {
 
   inc(): void {
     this.upAt = Date.now()
-    this.counter++
+   
+    this.store.dispatch(increase())
   }
   dec(): void {
     this.upAt = Date.now()
-    this.counter--
+    
+    this.store.dispatch(decrease())
   }
   zero(): void {
     this.upAt = Date.now()
-    this.counter=0
+    
+    this.store.dispatch(zero())
   }
 
 }
